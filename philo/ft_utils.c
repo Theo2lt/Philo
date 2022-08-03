@@ -6,18 +6,18 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 05:41:47 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/03 06:19:51 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-uint64_t ft_time_ms(void)
+uint64_t	ft_time_ms(void)
 {
-    struct timeval get_time;
-    
-    gettimeofday(&get_time, NULL);
-    return ((get_time.tv_sec * (uint64_t)1000) + (get_time.tv_usec / 1000));
+	struct timeval	get_time;
+
+	gettimeofday(&get_time, NULL);
+	return ((get_time.tv_sec * (uint64_t)1000) + (get_time.tv_usec / 1000));
 }
 
 void	slipe(uint64_t sleep_ms, t_philo *philo)
@@ -28,7 +28,6 @@ void	slipe(uint64_t sleep_ms, t_philo *philo)
 	while (ft_time_ms() < time && philo->data->running > 0)
 		usleep(50);
 }
-
 
 void	print_philo(t_philo *philo, char *str)
 {
