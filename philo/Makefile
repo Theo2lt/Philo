@@ -6,7 +6,7 @@
 #    By: tliot <tliot@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 21:22:24 by tliot             #+#    #+#              #
-#    Updated: 2022/08/03 07:48:38 by tliot            ###   ########.fr        #
+#    Updated: 2022/08/03 23:16:45 by tliot            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	=	ft_action.c\
 OBJS			=	$(SRCS:%.c=%.o)
 NAME			=	philo
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -g3 -pthread
+CFLAGS			=	-Wall -Wextra -Werror -g3 -pthread -MMD
 
 
 RM				=	rm -f

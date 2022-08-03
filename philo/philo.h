@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:53:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 06:36:44 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/03 23:18:51 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	int					time_to_die;
 	int					time_to_eat;
 	int					time_to_sleep;
+	uint64_t			time_start;
 	int					nbr_eat;
 	int					count_done;
 	bool				running;

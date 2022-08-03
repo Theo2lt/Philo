@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 06:19:51 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/03 23:28:42 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	print_philo(t_philo *philo, char *str)
 	if (!philo->data->running)
 		return ;
 	pthread_mutex_lock(&philo->data->writing);
-	printf("%lu %d %s\n", ft_time_ms(), philo->id, str);
+	printf("%lu %d %s\n", ft_time_ms() - philo->data->time_start,
+		philo->id, str);
 	pthread_mutex_unlock(&philo->data->writing);
 }
 

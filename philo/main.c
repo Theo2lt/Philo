@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 04:15:50 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 06:31:49 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/03 23:22:07 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	*job(void *arg)
 	philo = (t_philo *)arg;
 	philo->last_time_miam_miam = ft_time_ms();
 	if (philo->id % 2 == 0)
-	{
-		philo_think(philo);
 		usleep(philo->data->time_to_eat * 250);
-	}
 	while (philo->data->running)
 	{
 		if (take_fourch(philo) == -1)
@@ -79,6 +76,7 @@ int	start_thread(t_data *data)
 	pthread_t	thread_check_life;
 
 	i = 0;
+	data->time_start = ft_time_ms();
 	while (i != data->nbr_philo)
 	{
 		if (pthread_create(&data->philo[i].thread_id,
