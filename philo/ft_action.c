@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.c                                           :+:      :+:    :+:   */
+/*   ft_action.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 06:18:29 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 06:26:37 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 01:42:58 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	take_fourch(t_philo *philo)
 
 void	drop_fourch(t_philo *philo)
 {
-	pthread_mutex_unlock(&philo->data->fourch[philo->left_fourch_id]);
 	pthread_mutex_unlock(&philo->data->fourch[philo->right_fourch_id]);
+	pthread_mutex_unlock(&philo->data->fourch[philo->left_fourch_id]);
 }
