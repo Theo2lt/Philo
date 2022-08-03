@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 06:29:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 07:42:28 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 00:05:43 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	init_mutex(t_data *data)
 		pthread_mutex_init(&data->fourch[i], NULL);
 		i++;
 	}
+	pthread_mutex_init(&data->check_running, NULL);
 	pthread_mutex_init(&data->writing, NULL);
 	return (0);
 }
