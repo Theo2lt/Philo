@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 06:24:13 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 09:47:58 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,21 @@ uint64_t	ft_time_ms(void)
 
 void	slipe(uint64_t sleep_ms, t_philo *philo)
 {
-	uint64_t	time;
+	uint64_t    wait_micro_us;
+	
+	int i;
 
-	time = ft_time_ms() + sleep_ms;
-	while (ft_time_ms() < time && philo->data->running > 0)
-		usleep(50);
+	wait_micro_us = sleep_ms * 1000;
+	i = wait_micro_us / 50000;
+	wait_micro_us = wait_micro_us % 50000;
+	while (i != 0)
+	{
+		usleep(50000);
+		if(mutex_check_running(philo) == false)
+			break;
+		i--;
+	}
+	usleep(wait_micro_us);
 }
 
 void	print_philo(t_philo *philo, char *str)
@@ -37,11 +47,24 @@ void	print_philo(t_philo *philo, char *str)
 		pthread_mutex_unlock(&philo->data->m_running);
 		return ;
 	}
-	pthread_mutex_unlock(&philo->data->m_running);
-	pthread_mutex_lock(&philo->data->writing);
 	printf("%lu %d %s\n", ft_time_ms() - philo->data->time_start,
 		philo->id, str);
-	pthread_mutex_unlock(&philo->data->writing);
+	pthread_mutex_unlock(&philo->data->m_running);
+}
+
+
+int ft_verif_argument(char *str)
+{
+	int i;
+	i = 0;
+	while (str[i])
+	{
+		if((str[i] < '0' || str[i] > '9') || str[i] == '-')
+			return (-1);
+		i++;
+	}
+	return(ft_atoi(str));
+	
 }
 
 int	ft_atoi(const char *str)

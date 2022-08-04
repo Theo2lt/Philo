@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 06:29:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 06:04:37 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 09:48:24 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /// Init Argument ///
 int	init_arg(t_data *data, char **argv)
 {
-	data->nbr_philo = ft_atoi(argv[1]);
-	data->time_to_die = ft_atoi(argv[2]);
-	data->time_to_eat = ft_atoi(argv[3]);
-	data->time_to_sleep = ft_atoi(argv[4]);
+	data->nbr_philo = ft_verif_argument(argv[1]);
+	data->time_to_die = ft_verif_argument(argv[2]);
+	data->time_to_eat = ft_verif_argument(argv[3]);
+	data->time_to_sleep = ft_verif_argument(argv[4]);
 	data->running = true;
 	data->count_done = 0;
 	if (data->nbr_philo <= 0
@@ -71,7 +71,6 @@ int	init_mutex(t_data *data)
 		pthread_mutex_init(&data->fourch[i], NULL);
 		i++;
 	}
-	pthread_mutex_init(&data->writing, NULL);
 	pthread_mutex_init(&data->m_time_miam_miam, NULL);
 	pthread_mutex_init(&data->m_done, NULL);
 	pthread_mutex_init(&data->m_done_count, NULL);

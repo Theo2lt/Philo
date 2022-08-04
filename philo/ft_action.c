@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 06:18:29 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 06:22:26 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 08:32:27 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ void	philo_miam_miam(t_philo *philo)
 	pthread_mutex_lock(&philo->data->m_time_miam_miam);
 	philo->last_time_miam_miam = ft_time_ms();
 	pthread_mutex_unlock(&philo->data->m_time_miam_miam);
-	usleep(1000 * philo->data->time_to_eat);
+	slipe(philo->data->time_to_eat, philo);
+	//usleep(1000 * philo->data->time_to_eat);
 }
 
 void	philo_sleep(t_philo *philo)
 {
 	print_philo(philo, "is sleeping");
-	usleep((1000 * philo->data->time_to_sleep));
+	slipe(philo->data->time_to_sleep, philo);
+	//usleep((1000 * philo->data->time_to_sleep));
 }
 
 void	philo_think(t_philo *philo)

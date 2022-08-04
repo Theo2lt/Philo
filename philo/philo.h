@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:53:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 06:04:40 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 09:48:14 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_data
 	pthread_mutex_t		m_done;
 	pthread_mutex_t		m_done_count;
 	pthread_mutex_t		m_running;
-	pthread_mutex_t		writing;
 	pthread_mutex_t		*fourch;
 	t_philo				*philo;
 }						t_data;
@@ -62,6 +61,10 @@ void		philo_sleep(t_philo *philo);
 void		philo_think(t_philo *philo);
 int			take_fourch(t_philo *philo);
 void		drop_fourch(t_philo *philo);
+
+
+/// MAIN.C
+int mutex_check_running(t_philo *philo);
 
 /// FT_FREE.C ///
 
@@ -79,5 +82,6 @@ uint64_t	ft_time_ms(void);
 void		slipe(uint64_t sleep_ms, t_philo *philo);
 void		print_philo(t_philo *philo, char *str);
 int			ft_atoi(const char *str);
+int			ft_verif_argument(char *str);
 
 #endif

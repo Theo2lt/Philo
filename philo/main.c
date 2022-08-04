@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 04:15:50 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 06:47:15 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 09:49:04 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ void	*job(void *arg)
 	pthread_mutex_lock(&philo->data->m_time_miam_miam);
 	philo->last_time_miam_miam = ft_time_ms();
 	pthread_mutex_unlock(&philo->data->m_time_miam_miam);
-
 	if (philo->id % 2 == 0)
-		usleep(philo->data->time_to_eat * 500);
+		slipe(philo->data->time_to_eat, philo);
+
+		//usleep(philo->data->time_to_eat * 500);
 	
 	while (mutex_check_running(philo))
 	{
@@ -82,7 +83,7 @@ void	*check_life(void *arg)
 		pthread_mutex_unlock(&data->m_done_count);
 		if (i == data->nbr_philo)
 			i = 0;
-		usleep(100);
+		usleep(1000);
 		time = ft_time_ms();
 		pthread_mutex_lock(&data->m_time_miam_miam);
 		pthread_mutex_lock(&data->m_done);
