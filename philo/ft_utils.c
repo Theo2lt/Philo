@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 04:47:22 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 06:24:13 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,13 @@ void	slipe(uint64_t sleep_ms, t_philo *philo)
 
 void	print_philo(t_philo *philo, char *str)
 {
+	pthread_mutex_lock(&philo->data->m_running);
 	if (!philo->data->running)
+	{
+		pthread_mutex_unlock(&philo->data->m_running);
 		return ;
+	}
+	pthread_mutex_unlock(&philo->data->m_running);
 	pthread_mutex_lock(&philo->data->writing);
 	printf("%lu %d %s\n", ft_time_ms() - philo->data->time_start,
 		philo->id, str);

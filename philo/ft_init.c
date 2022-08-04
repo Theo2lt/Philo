@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 06:29:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 07:42:28 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 06:04:37 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,9 @@ int	init_mutex(t_data *data)
 		i++;
 	}
 	pthread_mutex_init(&data->writing, NULL);
+	pthread_mutex_init(&data->m_time_miam_miam, NULL);
+	pthread_mutex_init(&data->m_done, NULL);
+	pthread_mutex_init(&data->m_done_count, NULL);
+	pthread_mutex_init(&data->m_running, NULL);
 	return (0);
 }

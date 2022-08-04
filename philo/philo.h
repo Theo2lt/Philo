@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:53:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 23:18:51 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 06:04:40 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ typedef struct s_data
 	int					nbr_eat;
 	int					count_done;
 	bool				running;
+	pthread_mutex_t		m_time_miam_miam;
+	pthread_mutex_t		m_done;
+	pthread_mutex_t		m_done_count;
+	pthread_mutex_t		m_running;
 	pthread_mutex_t		writing;
 	pthread_mutex_t		*fourch;
 	t_philo				*philo;
