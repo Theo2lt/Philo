@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 04:15:50 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 00:09:12 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 02:28:27 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	*check_life(void *arg)
 			i = 0;
 		usleep(1000);
 		time = ft_time_ms();
+		pthread_mutex_lock(&data->all_miam_miam);
 		if (!data->philo[i].done
 			&& (int)(time - data->philo[i].last_time_miam_miam)
 			> data->time_to_die)
@@ -67,6 +68,7 @@ void	*check_life(void *arg)
 			break ;
 		}
 		i++;
+		pthread_mutex_lock(&data->all_miam_miam);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:53:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/03 23:59:48 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/04 01:46:13 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data
 	int					count_done;
 	bool				running;
 	pthread_mutex_t		check_running;
+	pthread_mutex_t		all_miam_miam;
 	pthread_mutex_t		writing;
 	pthread_mutex_t		*fourch;
 	t_philo				*philo;
