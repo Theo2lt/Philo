@@ -6,7 +6,7 @@
 #    By: tliot <tliot@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 21:22:24 by tliot             #+#    #+#              #
-#    Updated: 2022/08/03 23:16:45 by tliot            ###   ########.fr        #
+#    Updated: 2022/08/04 04:44:42 by tliot            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	=	ft_action.c\
 
 
 OBJS			=	$(SRCS:%.c=%.o)
+OBJSD			=	$(SRCS:%.c=%.d)
 NAME			=	philo
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror -g3 -pthread -MMD
@@ -37,7 +38,7 @@ $(NAME):    philo.h $(OBJS)
 
 
 clean:
-	${RM} ${OBJS} ${OBJSBONUS}
+	${RM} ${OBJS} ${OBJSD}
 
 fclean:		clean
 		${RM} ${NAME} ${NAME}_bonus
