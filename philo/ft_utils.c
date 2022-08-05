@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/05 03:49:12 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/05 12:39:23 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ int	ft_verif_argument(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] < '0' || str[i] > '9') || str[i] == '-')
-			return (-1);
-		i++;
+		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '+')
+			i++;
+		else
+			return(-1);
 	}
 	return (ft_atoi(str));
 }
