@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 06:29:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 09:48:24 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/05 03:48:13 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	init_philo(t_data *data)
 	i = 0;
 	while (i != data->nbr_philo)
 	{
-		data->philo[i].id = i;
+		data->philo[i].id = i + 1;
 		data->philo[i].left_fourch_id = i;
 		data->philo[i].right_fourch_id = (i + 1) % data->nbr_philo;
 		data->philo[i].data = data;

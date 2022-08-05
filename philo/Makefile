@@ -6,7 +6,7 @@
 #    By: tliot <tliot@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 21:22:24 by tliot             #+#    #+#              #
-#    Updated: 2022/08/04 06:00:22 by tliot            ###   ########.fr        #
+#    Updated: 2022/08/05 03:57:49 by tliot            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS	=	ft_action.c\
 			ft_free.c\
 			ft_init.c\
 			ft_utils.c\
+			ft_mutex.c\
 			main.c\
 
 

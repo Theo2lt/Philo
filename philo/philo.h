@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:53:33 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 09:48:14 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/05 04:59:02 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ void		philo_think(t_philo *philo);
 int			take_fourch(t_philo *philo);
 void		drop_fourch(t_philo *philo);
 
+/// FT_MUTEX.C ///
 
-/// MAIN.C
-int mutex_check_running(t_philo *philo);
+bool		mutex_check_running(t_philo *philo);
+bool		mutex_change_running(t_data	*data);
+bool		mutex_check_death(t_data *data, int i);
+void		mutex_change_last_time_miam_miam(t_philo *philo);
 
 /// FT_FREE.C ///
 

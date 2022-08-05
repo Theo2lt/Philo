@@ -6,43 +6,23 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 04:15:50 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 09:49:04 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/05 04:58:23 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
-
-int mutex_check_running(t_philo *philo)
-{
-	bool i;
-	pthread_mutex_lock(&philo->data->m_running);
-	if(philo->data->running)
-		i = true;
-	else
-		i = false;
-	pthread_mutex_unlock(&philo->data->m_running);
-	return (i);
-}
 /// Thread Philo ///
 void	*job(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	
-	pthread_mutex_lock(&philo->data->m_time_miam_miam);
-	philo->last_time_miam_miam = ft_time_ms();
-	pthread_mutex_unlock(&philo->data->m_time_miam_miam);
+	mutex_change_last_time_miam_miam(philo);
 	if (philo->id % 2 == 0)
-		slipe(philo->data->time_to_eat, philo);
-
-		//usleep(philo->data->time_to_eat * 500);
-	
+		slipe(philo->data->time_to_eat * 0.3, philo);
 	while (mutex_check_running(philo))
 	{
-		
 		if (take_fourch(philo) == -1)
 			return (NULL);
 		philo_miam_miam(philo);
@@ -55,7 +35,6 @@ void	*job(void *arg)
 			pthread_mutex_lock(&philo->data->m_done_count);
 			philo->data->count_done++;
 			pthread_mutex_unlock(&philo->data->m_done_count);
-			break ;
 		}
 		philo_sleep(philo);
 		philo_think(philo);
@@ -68,37 +47,19 @@ void	*check_life(void *arg)
 {
 	t_data	*data;
 	int		i;
-	int		time;
 
 	data = (t_data *)arg;
 	i = 0;
+	usleep(5000);
 	while (42)
 	{
-		pthread_mutex_lock(&data->m_done_count);
-		if (data->count_done == data->nbr_philo)
-		{
-			pthread_mutex_unlock(&data->m_done_count);
+		if (!mutex_change_running(data))
 			break ;
-		}
-		pthread_mutex_unlock(&data->m_done_count);
 		if (i == data->nbr_philo)
 			i = 0;
-		usleep(1000);
-		time = ft_time_ms();
-		pthread_mutex_lock(&data->m_time_miam_miam);
-		pthread_mutex_lock(&data->m_done);
-		if (!data->philo[i].done && (int)(time - data->philo[i].last_time_miam_miam) > data->time_to_die)
-		{
-			pthread_mutex_unlock(&data->m_done);
-			pthread_mutex_unlock(&data->m_time_miam_miam);
-			print_philo(&data->philo[i], "died");
-			pthread_mutex_lock(&data->m_running);
-			data->running = false;
-			pthread_mutex_unlock(&data->m_running);
+		usleep(100);
+		if (!mutex_check_death(data, i))
 			break ;
-		}
-		pthread_mutex_unlock(&data->m_done);
-		pthread_mutex_unlock(&data->m_time_miam_miam);
 		i++;
 	}
 	return (NULL);

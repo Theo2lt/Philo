@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/04 09:47:58 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/05 03:49:12 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ uint64_t	ft_time_ms(void)
 
 void	slipe(uint64_t sleep_ms, t_philo *philo)
 {
-	uint64_t    wait_micro_us;
-	
-	int i;
+	uint64_t	wait_micro_us;
+	int			i;
 
 	wait_micro_us = sleep_ms * 1000;
 	i = wait_micro_us / 50000;
@@ -32,8 +31,8 @@ void	slipe(uint64_t sleep_ms, t_philo *philo)
 	while (i != 0)
 	{
 		usleep(50000);
-		if(mutex_check_running(philo) == false)
-			break;
+		if (mutex_check_running(philo) == false)
+			break ;
 		i--;
 	}
 	usleep(wait_micro_us);
@@ -52,19 +51,18 @@ void	print_philo(t_philo *philo, char *str)
 	pthread_mutex_unlock(&philo->data->m_running);
 }
 
-
-int ft_verif_argument(char *str)
+int	ft_verif_argument(char *str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{
-		if((str[i] < '0' || str[i] > '9') || str[i] == '-')
+		if ((str[i] < '0' || str[i] > '9') || str[i] == '-')
 			return (-1);
 		i++;
 	}
-	return(ft_atoi(str));
-	
+	return (ft_atoi(str));
 }
 
 int	ft_atoi(const char *str)
