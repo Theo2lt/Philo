@@ -6,7 +6,7 @@
 /*   By: tliot <tliot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:01:20 by tliot             #+#    #+#             */
-/*   Updated: 2022/08/05 12:39:23 by tliot            ###   ########.fr       */
+/*   Updated: 2022/08/06 03:18:23 by tliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_atoi(const char *str)
 {
 	unsigned int	i;
 	int				signe;
-	int				result;
+	long int		result;
 
 	signe = 1;
 	i = 0;
@@ -87,10 +87,8 @@ int	ft_atoi(const char *str)
 	while (str[++i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - 48);
-		if (signe > 0 && i >= 25)
+		if (result > 2147483647)
 			return (-1);
-		else if (signe < 0 && i >= 26)
-			return (0);
 	}
 	return (result * signe);
 }
